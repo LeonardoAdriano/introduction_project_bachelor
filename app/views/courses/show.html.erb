@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong>Private:</strong>
+  <%= @course.private %>
+</p>
+
+<p>
+  <strong>Valid until:</strong>
+  <%= @course.valid_until %>
+</p>
+
+<p>
+  <strong>Accessible until:</strong>
+  <%= @course.accessible_until %>
+</p>
+
+<p>
+  <strong>Accessible from:</strong>
+  <%= @course.accessible_from %>
+</p>
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

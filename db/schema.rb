@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_30_122335) do
+ActiveRecord::Schema.define(version: 2021_05_03_143246) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -18,6 +18,22 @@ ActiveRecord::Schema.define(version: 2021_04_30_122335) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "pages"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.boolean "private"
+    t.date "valid_until"
+    t.date "accessible_until"
+    t.date "accessible_from"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.boolean "accepts"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "producers", force: :cascade do |t|
@@ -35,6 +51,24 @@ ActiveRecord::Schema.define(version: 2021_04_30_122335) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "producer_id"
     t.index ["producer_id"], name: "index_products_on_producer_id"
+  end
+
+  create_table "tours", force: :cascade do |t|
+    t.string "name"
+    t.string "driver_name"
+    t.string "city"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.date "entered"
+    t.string "mail"
+    t.boolean "verified"
+    t.string "password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "products", "producers"
