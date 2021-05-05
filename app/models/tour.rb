@@ -1,2 +1,0 @@
-class Tour < ApplicationRecord
-end

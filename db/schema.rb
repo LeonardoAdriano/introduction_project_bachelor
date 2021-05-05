@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_03_143246) do
-
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "pages"
-  end
+ActiveRecord::Schema.define(version: 2021_05_05_120426) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
@@ -34,31 +26,11 @@ ActiveRecord::Schema.define(version: 2021_05_03_143246) do
     t.boolean "accepts"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "producers", force: :cascade do |t|
-    t.string "name"
-    t.integer "age"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "price"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "producer_id"
-    t.index ["producer_id"], name: "index_products_on_producer_id"
-  end
-
-  create_table "tours", force: :cascade do |t|
-    t.string "name"
-    t.string "driver_name"
-    t.string "city"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "course_id"
+    t.text "member_type"
+    t.index ["course_id"], name: "index_participants_on_course_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,5 +43,6 @@ ActiveRecord::Schema.define(version: 2021_05_03_143246) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "products", "producers"
+  add_foreign_key "participants", "courses"
+  add_foreign_key "participants", "users"
 end
