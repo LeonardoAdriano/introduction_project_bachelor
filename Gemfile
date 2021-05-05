@@ -1,10 +1,16 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.3'
+ruby '3.0.1'
 
 gem 'rolify'
 gem 'pundit'
+
+gem 'irb'
+gem 'rexml'
+
+# Bequemes debuggen
+gem 'byebug'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
