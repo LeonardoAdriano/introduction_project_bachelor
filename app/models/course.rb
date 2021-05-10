@@ -12,8 +12,14 @@ class Course < ApplicationRecord
   has_many :participants , dependent: :destroy
   has_many :users, through:  :participants
   #belongs_to :course
-  #belongs_to :user, :foreign_key => 'super_admin_id'
+
+  belongs_to :super_admin, :foreign_key => 'super_admin_id', class_name: "User"
   # validates_with OneAdminValidator, on: :create
+
+  def all_users
+    query = users.to_sql + "\nUNION\n" + User.where(id: super_admin_id).to_sql
+    User.find_by_sql(query)
+  end
 
   # Adds the given user to the course
   #
@@ -29,7 +35,7 @@ class Course < ApplicationRecord
       raise SecurityError.new "No Permissions"
     end
 
-    #check if user is present 
+    #check if user is present
     User.find(user.id)
 
     current_user_role = participants.where(user_id: current_user.id).first
@@ -40,18 +46,18 @@ class Course < ApplicationRecord
         else
           participants.create(user_id: user.id, member_type: "participant")
           return true
-        end  
+        end
       end
       if current_user_role.member_type == "participant" && public && !is_admin
         participants.create(user_id: user.id, member_type: "participant")
         return true
       end
-    
+
 
     raise SecurityError.new "No Permissions"
   end
 
-  
+
 
   def change_user_role!(current_user, user, is_admin:)
     if(!user_exists?(current_user))
@@ -62,7 +68,7 @@ class Course < ApplicationRecord
     end
 
     current_user_role = participants.where(user_id: current_user.id).first
-    if current_user_role != nil 
+    if current_user_role != nil
       if current_user_role.member_type == "admin"
         if is_admin
           participants.find_by(user_id: user.id).update( member_type: "admin")
@@ -70,7 +76,7 @@ class Course < ApplicationRecord
         else
           participants.find_by(user_id: user.id).update( member_type: "participant")
           return true
-        end  
+        end
       end
     end
 
@@ -103,8 +109,8 @@ class Course < ApplicationRecord
           user.destroy
         end
         #participants.find_by(user_id: user.id).destroy
-        return true 
-    end  
+        return true
+    end
 
     raise SecurityError.new "No Permissions"
   end
