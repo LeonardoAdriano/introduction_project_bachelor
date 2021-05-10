@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :course do
     name { "Pimp Your Math" }
-    private { true }
-    # association :participants, factory: :participant
+    public { true }
   end
 end

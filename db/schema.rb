@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_05_120426) do
+ActiveRecord::Schema.define(version: 2021_05_07_095205) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
-    t.boolean "private"
+    t.boolean "public"
     t.date "valid_until"
     t.date "accessible_until"
     t.date "accessible_from"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_120426) do
     t.integer "course_id"
     t.text "member_type"
     t.index ["course_id"], name: "index_participants_on_course_id"
+    t.index ["user_id", "course_id"], name: "user_course_references_unique", unique: true
     t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
