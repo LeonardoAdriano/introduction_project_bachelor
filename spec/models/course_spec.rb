@@ -194,7 +194,7 @@ RSpec.describe Course, type: :model do
       c.add_user!(current_user, u_member, is_admin: true)
       c.add_user!(current_user, u_member, is_admin: false)
       expect(Participant.count).to eq 2
-      expect(c.participants.find_by(user_id: u_member.id).member_type).to eq "participant"
+      expect(c.participants.find_by(user_id: u_member.id).member_type).to eq "admin"
     end
 
     it "add a non-existing user" do
@@ -213,7 +213,7 @@ RSpec.describe Course, type: :model do
       c = FactoryBot.create(:course, public: false)
 
       current_user = FactoryBot.build(:user)
-      c.participants.create(user: current_user, member_type: "admin")
+      c.participants.create(user_id: current_user.id, member_type: "admin")
       
       u_member = FactoryBot.create(:user)
 

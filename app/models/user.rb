@@ -12,7 +12,9 @@ class User < ApplicationRecord
     #validates_with GoodnessValidator, on: :destory
     has_many :participants , dependent: :destroy
     has_many :courses, through: :participants
+    #has_many :courses
     validates  :name, presence: true
+    
 
     def destroy
         courses.each do | c |

@@ -11,7 +11,8 @@ class Course < ApplicationRecord
 
   has_many :participants , dependent: :destroy
   has_many :users, through:  :participants
-
+  #belongs_to :course
+  #belongs_to :user, :foreign_key => 'super_admin_id'
   # validates_with OneAdminValidator, on: :create
 
   # Adds the given user to the course
@@ -64,7 +65,6 @@ class Course < ApplicationRecord
     if current_user_role != nil 
       if current_user_role.member_type == "admin"
         if is_admin
-
           participants.find_by(user_id: user.id).update( member_type: "admin")
           return true
         else
