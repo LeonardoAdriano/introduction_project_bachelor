@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_093305) do
+ActiveRecord::Schema.define(version: 2021_05_10_121412) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2021_05_10_093305) do
     t.date "accessible_from"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "super_admin_id"
+    t.index ["super_admin_id"], name: "index_courses_on_super_admin_id"
   end
 
   create_table "participants", force: :cascade do |t|
@@ -44,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_093305) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "courses", "users", column: "super_admin_id"
   add_foreign_key "participants", "courses"
   add_foreign_key "participants", "users"
 end
