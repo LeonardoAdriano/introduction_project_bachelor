@@ -1,0 +1,17 @@
+current directory: /Users/leonardoadrianogoncalves/Documents/repos/introduction_project_bachelor/''/gems/racc-1.5.2/ext/racc/cparse
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20210511-5916-16fxmdc.rb extconf.rb
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /Users/leonardoadrianogoncalves/Documents/repos/introduction_project_bachelor/''/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR=" clean
+
+current directory: /Users/leonardoadrianogoncalves/Documents/repos/introduction_project_bachelor/''/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR="
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+ld: warning: directory not found for option '-L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.Internal.sdk/usr/local/lib'
+
+current directory: /Users/leonardoadrianogoncalves/Documents/repos/introduction_project_bachelor/''/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20210511-5916-1wi3kpp/racc

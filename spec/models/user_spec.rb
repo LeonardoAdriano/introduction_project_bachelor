@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'factory_bot_rails'
 
 RSpec.describe User, type: :model do
-  xcontext 'create user' do  # (almost) plain English
+  xcontext 'leonardo test' do  
     it 'without name' do   #
       expect {
         u = FactoryBot.build(:user)

@@ -1,0 +1,19 @@
+current directory: /Users/leonardoadrianogoncalves/Documents/repos/introduction_project_bachelor/''/gems/jaro_winkler-1.5.4/ext/jaro_winkler
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20210511-5916-18mgym.rb extconf.rb
+creating Makefile
+
+current directory: /Users/leonardoadrianogoncalves/Documents/repos/introduction_project_bachelor/''/gems/jaro_winkler-1.5.4/ext/jaro_winkler
+make "DESTDIR=" clean
+
+current directory: /Users/leonardoadrianogoncalves/Documents/repos/introduction_project_bachelor/''/gems/jaro_winkler-1.5.4/ext/jaro_winkler
+make "DESTDIR="
+compiling adj_matrix.c
+compiling codepoints.c
+compiling jaro.c
+compiling jaro_winkler.c
+linking shared-object jaro_winkler/jaro_winkler_ext.bundle
+ld: warning: directory not found for option '-L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.Internal.sdk/usr/local/lib'
+
+current directory: /Users/leonardoadrianogoncalves/Documents/repos/introduction_project_bachelor/''/gems/jaro_winkler-1.5.4/ext/jaro_winkler
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 jaro_winkler_ext.bundle ./.gem.20210511-5916-1vo98k0/jaro_winkler
